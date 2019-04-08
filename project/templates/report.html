@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+</head>
+<body>
+<h1>Registered List</h1>
+{% if qrylist: %}
+<table border="1">
+    <th>Full-Name</th>
+    <th>Email Address</th>
+    {% for i in qrylist %}
+    <tr>
+        <td>{{ i.fullname }}</td>
+        <td>{{ i.email }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+<a href="{{ url_for('homepage') }}">Go Home</a>
+</body>
+</html>

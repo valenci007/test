@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+</head>
+<body>
+<h1>Welcome to erpSoft</h1>
+{% set messages = get_flashed_messages() %}
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-info">{{ message }}</div>
+        {% endfor %}
+{% endif %}
+<form action="{{ url_for('add') }}" method="POST">
+<p>
+<label>Name: </label>
+{{ form.Name }}
+{{ form.csrf_token }}
+
+{% for error in form.Name.errors %}
+<small>{{ error }}</small>
+{% endfor %}
+</p>
+<p>
+<label>Email: </label>
+{{ form.Email }}
+{% for error in form.Email.errors %}
+<small>{{ error }}</small>
+{% endfor %}
+</p>
+{{ form.Submit }}<br>
+<p></p>
+<a href="{{ url_for('lists') }}">View Registered List</a>
+</form>
+</body>
+</html>
